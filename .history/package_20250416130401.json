@@ -1,0 +1,72 @@
+{
+  "name": "csgo-mm-server-picker",
+  "version": "v1.2.3",
+  "description": "Server picker for CS:GO matchmaking",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "electron-builder",
+    "publish": "./node_modules/.bin/electron-builder electron-builder --publish always"
+  },
+  "author": "Jyben <benjamin.letessier@gmail.com>",
+  "license": "CC-BY-NC-ND-4.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jyben/csgo-mm-server-picker.git"
+  },
+  "devDependencies": {
+    "electron": "^11.5.0",
+    "electron-builder": "^22.9.1"
+  },
+  "dependencies": {
+    "axios": "^0.21.2",
+    "electron-log": "^3.0.6",
+    "electron-updater": "^4.3.1",
+    "glob": "^7.1.4",
+    "simple-node-logger": "^18.12.24",
+    "sudo-prompt": "^8.2.5"
+  },
+  "build": {
+    "appId": "com.csgommserverpicker.app",
+    "productName": "CSGO MM Server Picker",
+    "copyright": "Copyright © year ${author}",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Jyben",
+        "vPrefixedTagName": "true",
+        "host": "github.com",
+        "protocol": "https",
+        "releaseType": "release"
+      }
+    ],
+    "dmg": {},
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "publish": [
+        "github"
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "publish": [
+        "github"
+      ]
+    }
+  }
+}

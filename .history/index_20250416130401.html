@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https:">
+
+  <link rel="stylesheet" href="app/assets/css/style.css">
+  <link rel="stylesheet" href="app/assets/css/nav.css">
+  <link rel="stylesheet" href="app/assets/css/global.css">
+  <link rel="stylesheet" href="app/assets/css/variables.css">
+  <link rel="stylesheet" href="app/assets/css/demo.css">
+
+  <title>CS:GO MM Server Picker</title>
+</head>
+
+<body>
+  <nav class="nav js-nav">
+    <header class="nav-header">
+      <h1 class="nav-title"><strong>CS:GO </strong>MM server picker</h1>
+    </header>
+
+    <center>
+      <p id="firewallMessage" style="color:red;font-style: italic;font-weight:bold;font-size:11px"></p>
+      <button class="demo-button" id="ping">📡 Ping</button>
+    </center>
+
+    <div class="demo-protip">
+      <p><b>1.</b> Select a region on the world map</p>
+      <p><b>2.</b> Select the servers you want to play on :</p>
+
+      <span id='servers-list'>
+
+      </span>
+
+      <p><b>3.</b> Click on "GO"</p>
+    </div>
+
+    <center>
+      <button class="demo-button" id="firewall-block">✔️ GO</button>
+      <button class="demo-button" id="csgo">🚀 CS:GO</button>
+    </center>
+
+    </br>
+
+    <center>
+      <button class="demo-button" id="firewall-reset">♻️ Reset</button>
+    </center>
+
+    <footer class="nav-footer">
+      <center>
+        <button type="button" id="button-about" data-modal="about" class="nav-footer-button">🌐 About</button>•
+        <button type="button" id="button-banana" data-modal="about" class="nav-footer-button">🍌 GameBanana</button>•
+        <span id="version"></span>
+      </center>
+    </footer>
+  </nav>
+
+  <main class="content">
+    <div id="loader" style="display:none;"></div>
+    <div class="dot-red" id="eu-west">
+      <div class="cluster-box">EU WEST<br /><span id="time-eu-west"></span></div>
+    </div>
+    <div class="dot-red" id="eu-east">
+      <div class="cluster-box">EU EAST<br /><span id="time-eu-east"></span></div>
+    </div>
+    <div class="dot-red" id="na-west">
+      <div class="cluster-box">NA WEST<br /><span id="time-na-west"></span></div>
+    </div>
+    <div class="dot-red" id="na-east">
+      <div class="cluster-box">NA EAST<br /><span id="time-na-east"></span></div>
+    </div>
+    <div class="dot-red" id="sa">
+      <div class="cluster-box">SA<br /><span id="time-sa"></span></div>
+    </div>
+    <div class="dot-red" id="oc">
+      <div class="cluster-box">OC<br /><span id="time-oc"></span></div>
+    </div>
+    <div class="dot-red" id="af">
+      <div class="cluster-box">AF<br /><span id="time-af"></span></div>
+    </div>
+    <div class="dot-red" id="as">
+      <div class="cluster-box">AS<br /><span id="time-as"></span></div>
+    </div>
+  </main>
+
+  <div id="ad" class="main-footer">
+    <div class="footer-top">
+      CS:GO MM Server Picker gives you a free case by clicking this referral banner :
+    </div>
+    <footer class="footer-bot">
+    </footer>
+  </div>
+</body>
+
+<script type="text/javascript">
+  require('./app/renderer-process/world-map');
+  require('./app/renderer-process/left-menu');
+</script>
+
+</html>

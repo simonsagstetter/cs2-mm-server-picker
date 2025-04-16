@@ -1,0 +1,212 @@
+#ping {
+  color: hsl(222, 53%, 50%);
+}
+
+#firewall-block {
+  color: hsl(222, 53%, 50%);
+}
+
+#csgo {
+  color: hsl(222, 53%, 50%);
+}
+
+#firewall-reset {
+  color: hsl(330, 65%, 48%);
+}
+
+#eu-west {
+  position: absolute;
+  left: 380px;
+  top: 100px;
+}
+
+#eu-east {
+  position: absolute;
+  left: 500px;
+  top: 100px;
+}
+
+#na-east {
+  position: absolute;
+  left: 151px;
+  top: 130px;
+}
+
+#na-west {
+  position: absolute;
+  left: 60px;
+  top: 130px;
+}
+
+#af {
+  position: absolute;
+  left: 430px;
+  top: 230px;
+}
+
+#sa {
+  position: absolute;
+  left: 200px;
+  top: 300px;
+}
+
+#oc {
+  position: absolute;
+  left: 770px;
+  top: 340px;
+}
+
+#as {
+  position: absolute;
+  left: 700px;
+  top: 150px;
+}
+
+#loader {
+  border: 7px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 7px solid #3498db;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin-left: 50%;
+  margin-top: 25%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.dot-green {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #47f403;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(82, 255, 59, 0.63);
+  animation: pulse-green 2s infinite;
+}
+
+@-webkit-keyframes pulse-green {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(82, 255, 59, 0.63);
+  }
+
+  70% {
+    -webkit-box-shadow: 0 0 0 15px rgba(82, 255, 59, 0);
+  }
+
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(82, 255, 59, 0);
+  }
+}
+
+@keyframes pulse-green {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(82, 255, 59, 0.63);
+    box-shadow: 0 0 0 0 rgba(82, 255, 59, 0.63);
+  }
+
+  70% {
+    -moz-box-shadow: 0 0 0 15px rgba(82, 255, 59, 0);
+    box-shadow: 0 0 0 15px rgba(82, 255, 59, 0);
+  }
+
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(82, 255, 59, 0);
+    box-shadow: 0 0 0 0 rgba(82, 255, 59, 0);
+  }
+}
+
+.dot-red {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #f41f03;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(255, 82, 59, 0.63);
+  animation: pulse-red 2s infinite;
+}
+
+@-webkit-keyframes pulse-red {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(255, 82, 59, 0.63);
+  }
+
+  70% {
+    -webkit-box-shadow: 0 0 0 15px rgba(255, 82, 59, 0);
+  }
+
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(255, 82, 59, 0);
+  }
+}
+
+@keyframes pulse-red {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(255, 82, 59, 0.63);
+    box-shadow: 0 0 0 0 rgba(255, 82, 59, 0.63);
+  }
+
+  70% {
+    -moz-box-shadow: 0 0 0 15px rgba(255, 82, 59, 0);
+    box-shadow: 0 0 0 15px rgba(255, 82, 59, 0);
+  }
+
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(255, 82, 59, 0);
+    box-shadow: 0 0 0 0 rgba(255, 82, 59, 0);
+  }
+}
+
+.cluster-box {
+  border: 1px rgb(255, 255, 255) solid;
+  margin-top: -48px;
+  margin-left: -36px;
+  background-color: #242424;
+  width: 85px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 0 6px 0 #cdcdda;
+}
+
+.footer-top {
+  background-color: var(--color-bg);
+  height: 11%;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  line-height: 1;
+  color: rgb(202 58 58);
+  font-family: -webkit-pictograph;
+  text-align: center;
+  font-size: revert;
+  font-weight: bold;
+}
+
+.footer-bot {
+  height: 90%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-image: url("../img/CSGOEmpire.gif");
+  background-size: 100%;
+}
+
+.main-footer {
+  height: 26.5%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  cursor: pointer;
+}
