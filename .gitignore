@@ -1,10 +1,14 @@
 #misc
 .idea
+.DS_Store
+*.pem
+.prettierrc
 
 #directories
 bower_components
 node_modules
 dist
+.history
 
 #files
 *.tgz

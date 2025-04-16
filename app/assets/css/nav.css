@@ -7,7 +7,8 @@
   color: var(--color-subtle);
   border-right: 1px solid var(--color-border);
   background-color: var(--color-bg);
-  height: 74%;
+  height: 100%;
+  position: relative;
 }
 
 .nav.is-shown {
@@ -115,6 +116,11 @@
   padding: 1rem;
   border-top: 1px solid var(--color-border);
   text-align: center;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: hsl(0,0%,96%);
 }
 
 .nav-footer-icon {

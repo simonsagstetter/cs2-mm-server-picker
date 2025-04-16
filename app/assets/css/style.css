@@ -177,36 +177,3 @@
   color: white;
   box-shadow: 0 0 6px 0 #cdcdda;
 }
-
-.footer-top {
-  background-color: var(--color-bg);
-  height: 11%;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-  line-height: 1;
-  color: rgb(202 58 58);
-  font-family: -webkit-pictograph;
-  text-align: center;
-  font-size: revert;
-  font-weight: bold;
-}
-
-.footer-bot {
-  height: 90%;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  background-image: url("../img/CSGOEmpire.gif");
-  background-size: 100%;
-}
-
-.main-footer {
-  height: 26.5%;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  cursor: pointer;
-}

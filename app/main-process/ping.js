@@ -1,89 +1,105 @@
-const Ping = require('./ping-lite');
-const log = require('./log');
+const Ping = require("./ping-lite");
+const log = require("./log");
 
 let PingWrapper = function (clusters, window) {
-  this._clusters = clusters;
-  this._mainWindow = window;
-}
+    this._clusters = clusters;
+    this._mainWindow = window;
+};
 
 // Lance le ping sur tous les serveurs de Valve
 PingWrapper.prototype.execute = function () {
-  try {
-    this._clusters.clustersId.forEach(id => {
+    try {
+        this._clusters.clustersId.forEach((id) => {
+            const currentCluster = this._clusters.pops[id] || undefined;
+            if (!currentCluster || !currentCluster.relayAddresses) {
+                return;
+            }
 
-      if (this._clusters.pops[id].relayAddresses === undefined) this._clusters.pops[id].relayAddresses = [];
+            currentCluster.relayAddresses.forEach((relayAddresse) => {
+                if (relayAddresse === undefined) {
+                    currentCluster.relayAddresses.splice(currentCluster.relayAddresses.indexOf(relayAddresse), 1);
+                    return;
+                }
+                currentCluster.relayAddresses.splice(
+                    currentCluster.relayAddresses.indexOf(relayAddresse),
+                    1,
+                    relayAddresse.split(":")[0],
+                );
+            });
 
-      this._clusters.pops[id].relayAddresses.forEach(relayAddresse => {
-        if (relayAddresse === undefined) {
-          this._clusters.pops[id].relayAddresses.splice(this._clusters.pops[id].relayAddresses.indexOf(relayAddresse), 1);
-          return;
-        }
-        this._clusters.pops[id].relayAddresses.splice(this._clusters.pops[id].relayAddresses.indexOf(relayAddresse), 1, relayAddresse.split(':')[0]);
-      });
+            const hosts = currentCluster.relayAddresses;
 
-      const hosts = this._clusters.pops[id].relayAddresses;
+            hosts.forEach((host) => {
+                if (host === undefined) {
+                    return;
+                }
+                var ping = new Ping(host);
 
-      hosts.forEach(host => {
-        if (host === undefined) {
-          return;
-        }
-        var ping = new Ping(host);
+                ping.send((err, time) => {
+                    if (err === null && time !== null) {
+                        this._updateClusterStatus(host, time, true);
+                    } else {
+                        this._updateClusterStatus(host, 0, false);
+                    }
+                });
 
-        ping.send((err, time) => {
-
-          if (err === null && time !== null) {
-            this._updateClusterStatus(host, time, true);
-          }
-          else {
-            this._updateClusterStatus(host, 0, false);
-          }
+                setTimeout(function () {
+                    ping.stop();
+                }, 1000);
+            });
         });
-
-        setTimeout(function () {
-          ping.stop();
-        }, 1000);
-      });
-    });
-  } catch (error) {
-    log.error(error.stack);
-  }
-  finally {
-    this._mainWindow.webContents.send('spinner', [false]);
-  }
-}
+    } catch (error) {
+        log.error(error.stack);
+    } finally {
+        this._mainWindow.webContents.send("spinner", [false]);
+    }
+};
 
 // Mets à jour le status des serveurs et informe l'IHM
 PingWrapper.prototype._updateClusterStatus = function (host, time, alive) {
-  try {
-    this._clusters.clustersId.forEach(id => {
+    try {
+        this._clusters.clustersId.forEach((id) => {
+            const currentCluster = this._clusters.pops[id] || undefined;
 
-      let checkAlive = false;
-
-      this._clusters.pops[id].relayAddresses.forEach(relayAddresse => {
-        if (relayAddresse === host) {
-          this._mainWindow.webContents.send('update-ip-list', [id, host, this._clusters.pops[id].cityName, this._clusters.pops[id].continentId, time, alive]);
-
-          if (time < this._clusters.pops[id].status.time || this._clusters.pops[id].status.time === 0) {
-
-            if (!checkAlive && alive) {
-              checkAlive = true;
-              checkTime = time;
+            if (!currentCluster || !currentCluster.relayAddresses) {
+                return;
             }
 
-            this._clusters.pops[id].status.isAlive = alive;
-            this._clusters.pops[id].status.time = time;
+            let checkAlive = false;
 
-            if (alive) {
-              this._mainWindow.webContents.send('request-update-ping', [this._clusters.pops[id].continentId, this._clusters.pops[id].status.time]);
-            }
+            currentCluster.relayAddresses.forEach((relayAddresse) => {
+                if (relayAddresse === host) {
+                    this._mainWindow.webContents.send("update-ip-list", [
+                        id,
+                        host,
+                        currentCluster.cityName,
+                        currentCluster.continentId,
+                        time,
+                        alive,
+                    ]);
 
-          }
-        }
-      });
-    });
-  } catch (error) {
-    log.error(error.stack);
-  }
-}
+                    if (time < currentCluster.status.time || currentCluster.status.time === 0) {
+                        if (!checkAlive && alive) {
+                            checkAlive = true;
+                            checkTime = time;
+                        }
+
+                        currentCluster.status.isAlive = alive;
+                        currentCluster.status.time = time;
+
+                        if (alive) {
+                            this._mainWindow.webContents.send("request-update-ping", [
+                                currentCluster.continentId,
+                                currentCluster.status.time,
+                            ]);
+                        }
+                    }
+                }
+            });
+        });
+    } catch (error) {
+        log.error(error.stack);
+    }
+};
 
 module.exports = PingWrapper;

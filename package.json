@@ -1,13 +1,13 @@
 {
-  "name": "csgo-mm-server-picker",
-  "version": "v1.2.3",
-  "description": "Server picker for CS:GO matchmaking",
+  "name": "cs2-mm-server-picker",
+  "version": "v1.2.4",
+  "description": "Server picker for CS2 matchmaking",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "pack": "build --dir",
-    "dist": "electron-builder",
-    "publish": "./node_modules/.bin/electron-builder electron-builder --publish always"
+    "dist": "electron-builder build --win",
+    "publish": "./node_modules/.bin/electron-builder build --windows --publish always"
   },
   "author": "Jyben <benjamin.letessier@gmail.com>",
   "license": "CC-BY-NC-ND-4.0",
@@ -29,7 +29,7 @@
   },
   "build": {
     "appId": "com.csgommserverpicker.app",
-    "productName": "CSGO MM Server Picker",
+    "productName": "CS2 MM Server Picker",
     "copyright": "Copyright © year ${author}",
     "directories": {
       "buildResources": "build",
@@ -57,7 +57,7 @@
     "win": {
       "target": [
         {
-          "target": "nsis",
+          "target": "portable",
           "arch": [
             "x64",
             "ia32"
@@ -67,6 +67,15 @@
       "publish": [
         "github"
       ]
-    }
+    },
+    "nsis": {
+    "oneClick": false,   
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "CS2 MM Server Picker",
+    "deleteAppDataOnUninstall": false
+  }
   }
 }
