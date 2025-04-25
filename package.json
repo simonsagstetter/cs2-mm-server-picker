@@ -1,0 +1,47 @@
+{
+  "name": "cs2mmserverpicker",
+  "description": "Counter Strike 2 Matchmaking Server Blocker",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "author": {
+    "email": "simon.sagstetter95@gmail.com",
+    "name": "Simon sagstetter",
+    "url": "https://github.com/"
+  },
+  "main": "packages/entry-point.mjs",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=23.0.0"
+  },
+  "scripts": {
+    "build": "npm run build -ws --if-present",
+    "compile": "npm run build && electron-builder build --config electron-builder.mjs -w",
+    "test": "npx playwright test ./tests/e2e.spec.ts",
+    "start": "node packages/dev-mode.js",
+    "typecheck": "npm run typecheck -ws --if-present",
+    "create-renderer": "cd packages && npm create vite@latest renderer",
+    "integrate-renderer": "npm start --workspace @app/integrate-renderer",
+    "init": "npm run create-renderer && npm run integrate-renderer && npm install"
+  },
+  "devDependencies": {
+    "@npmcli/map-workspaces": "4.0.2",
+    "@playwright/test": "1.51.1",
+    "@types/node": "22.14.1",
+    "electron": "35.1.5",
+    "electron-builder": "26.0.12",
+    "glob": "11.0.1",
+    "playwright": "^1.51.1",
+    "react-icons": "^5.5.0"
+  },
+  "dependencies": {
+    "@app/main": "*",
+    "@tailwindcss/vite": "^4.1.4",
+    "@types/ping": "^0.4.4",
+    "ping": "^0.4.4",
+    "sudo-prompt": "^9.2.1",
+    "tailwindcss": "^4.1.4"
+  }
+}

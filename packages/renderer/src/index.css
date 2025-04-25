@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+    --color-cs2-lightblue: #98e4fa;
+    --color-cs2-blue: #548899;
+    --color-cs2-white: #fefeff;
+    --color-cs2-dark: #1f2528;
+    --color-cs2-lightgreen: #65E46C;
+    --color-cs2-green: #5cc564;
+    --color-cs2-darkgreen: #42814c;
+    --color-cs2-darkergreen: #1c3719;
+    --color-cs2-darkestgreen: #1c1b17;
+    --color-cs2-red: #CD353C;
+    --color-cs2-darkred: #7A161C;
+    --color-cs2-darkerred: #4F1C18;
+    --color-cs2-darkgrey: #252525;
+    --color-cs2-grey: #2D2D2D;
+    --color-cs2-grey2: #3b3a3a;
+    --color-cs2-lightgrey: #818482;
+    --color-cs2-lightergrey:#919191
+}
+
+@font-face {
+    font-family: 'Stratum2';
+    src: url('./assets/fonts/stratum2-bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Stratum2';
+    src: url('assets/fonts/stratum2-medium-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Stratum2';
+    src:  url('./assets/fonts/stratum2-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    font-family: 'Stratum2', 'sans-serif';
+}
+
+
+#dragableArea {
+    app-region: drag;
+}
