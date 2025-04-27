@@ -2,6 +2,7 @@ import { createContext, useReducer, useMemo, useEffect, useCallback } from "reac
 import { PoP } from "../../../../types/pop.types";
 import { send, sendWithData } from "@app/preload";
 import { FETCH, RESET, REFRESH, UNBLOCK, BLOCK } from "../constants/loading";
+import { DEFAULT_ERROR } from "../constants/messages";
 
 type Status = {
     isLoading: boolean;
@@ -228,7 +229,7 @@ const PopContextProvider: React.FC<PopContextProvider> = ({ children }) => {
                 },
             });
         } catch (error: unknown) {
-            let message = "An unknown error occurred. Please try again";
+            let message = DEFAULT_ERROR;
             if (error instanceof Error) {
                 message = error.message;
             }
@@ -274,7 +275,7 @@ const PopContextProvider: React.FC<PopContextProvider> = ({ children }) => {
                 },
             });
         } catch (error: unknown) {
-            let message = "An unknown error occurred. Please try again";
+            let message = DEFAULT_ERROR;
             if (error instanceof Error) {
                 message = error.message;
             }
@@ -351,7 +352,7 @@ const PopContextProvider: React.FC<PopContextProvider> = ({ children }) => {
                 },
             });
         } catch (error: unknown) {
-            let message = "An unknown error occurred. Please try again";
+            let message = DEFAULT_ERROR;
             if (error instanceof Error) {
                 message = error.message;
             }
@@ -391,7 +392,7 @@ const PopContextProvider: React.FC<PopContextProvider> = ({ children }) => {
                 },
             });
         } catch (error: unknown) {
-            let message = "An unknown error occurred. Please try again";
+            let message = DEFAULT_ERROR;
             if (error instanceof Error) {
                 message = error.message;
             }
@@ -422,7 +423,7 @@ const PopContextProvider: React.FC<PopContextProvider> = ({ children }) => {
         try {
             await sendWithData("unblock-pops", state.ruleNames);
         } catch (error: unknown) {
-            previousError = "An unknown error occurred. Please try again";
+            previousError = DEFAULT_ERROR;
             if (error instanceof Error) {
                 previousError = error.message;
             }
@@ -456,7 +457,7 @@ const PopContextProvider: React.FC<PopContextProvider> = ({ children }) => {
                 });
             }
         } catch (error: unknown) {
-            let message = "An unknown error occurred. Please try again";
+            let message = DEFAULT_ERROR;
             if (error instanceof Error) {
                 message = error.message;
             }

@@ -11,7 +11,7 @@ export default parse({
         transition: "will-change-[transform] transition-discrete",
         typo: "text-cs2-white",
         background: "bg-cs2-dark/45",
-        interactivity: "cursor-pointer",
+        interactivity: "cursor-pointer **:select-none",
     },
     selectedNotBlocked: {
         background: "!bg-cs2-dark/5",

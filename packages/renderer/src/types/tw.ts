@@ -44,6 +44,7 @@ export type Styles = Classes & {
     file?: Classes;
     selection?: Classes;
     backdrop?: Classes;
+    checked?: Classes;
 };
 
 export type TailwindStylesheet = Record<string, Styles>;

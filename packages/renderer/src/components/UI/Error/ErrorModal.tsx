@@ -2,6 +2,8 @@ import { createPortal } from "react-dom";
 import { useRef, useEffect } from "react";
 import usePop from "../../../hooks/usePop";
 import { AnimatePresence, motion } from "motion/react";
+import { errorModal } from "../../../motion/ui.config";
+import styles from "./ErrorModal.Styles";
 
 interface ErrorModal {
     title: string;
@@ -28,38 +30,14 @@ const ErrorModal: React.FC<ErrorModal> = ({ title, message, isActive }) => {
     return createPortal(
         <AnimatePresence mode="wait">
             {isActive && (
-                <motion.dialog
-                    key={message}
-                    layout
-                    initial={{
-                        scale: 0.5,
-                        opacity: 0,
-                    }}
-                    animate={{
-                        scale: 1,
-                        opacity: 1,
-                    }}
-                    exit={{
-                        scale: 0.5,
-                        opacity: 0,
-                    }}
-                    transition={{
-                        duration: 0.3,
-                        type: "spring",
-                    }}
-                    ref={dialog}
-                    className="overflow-none z-50 w-full h-full top-5 left-5 absolute bg-transparent flex flex-col items-center justify-center backdrop:bg-cs2-dark/50 "
-                >
-                    <form className="w-4/12  bg-cs2-dark shadow-lg shadow-cs2-dark border-[1px] border-cs2-grey2">
-                        <section className="bg-cs2-darkgrey">
-                            <h1 className="text-cs2-lightergrey font-bold text-xl px-6 py-3">{title}</h1>
+                <motion.dialog key={message} layout {...errorModal} ref={dialog} className={styles.dialog}>
+                    <form className={styles.form}>
+                        <section className={styles.header}>
+                            <h1 className={styles.title}>{title}</h1>
                         </section>
-                        <section className="flex flex-col justify-between bg-cs2-grey px-6 py-3">
-                            <p className="text-cs2-lightgrey font-medium self-start mb-6">{message}</p>
-                            <button
-                                onClick={handleOnClick}
-                                className="text-cs2-white uppercase self-end hover:bg-cs2-lightergrey/15 rounded-sm px-2 py-1 cursor-pointer tracking-tighter font-medium"
-                            >
+                        <section className={styles.body}>
+                            <p className={styles.message}>{message}</p>
+                            <button onClick={handleOnClick} className={styles.button}>
                                 ok
                             </button>
                         </section>

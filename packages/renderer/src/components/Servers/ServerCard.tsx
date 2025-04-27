@@ -18,6 +18,7 @@ import Dots from "../../assets/images/dots.svg";
 import { motion } from "motion/react";
 import { serverListItem } from "../../motion/server.config";
 import styles from "./ServerCard.Styles";
+import { RUNNING_ACTION_ERROR } from "../../constants/messages";
 
 const BACKGROUNDS = new Map<number, string>([
     [0, Ancient],
@@ -45,16 +46,11 @@ const ServerCard: React.FC<ServerCard> = ({ pop, index, isRunning }) => {
     const averagePingMsg = pop.averageTime === 0 ? "Not Reachable" : `${pop.averageTime} ms`,
         isSelected = selectedPops.findIndex((item) => item.id === pop.id) !== -1,
         isBlocked = blockedPops.findIndex((item) => item.id === pop.id) !== -1,
-        image =
-            index < 10 ? BACKGROUNDS.get(index) : BACKGROUNDS.get(parseInt(new Number(Math.random() * 9).toFixed(0))); /// HIER IST DER FEHLER
+        image = BACKGROUNDS.get(index % 10);
 
     const handleOnClick = () => {
         if (checkbox.current !== null && !isRunning) checkbox.current.click();
-        if (isRunning)
-            showModal({
-                title: "App is running",
-                message: "Server blocking action is running. Please cancel the action first.",
-            });
+        if (isRunning) showModal(RUNNING_ACTION_ERROR);
     };
 
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {

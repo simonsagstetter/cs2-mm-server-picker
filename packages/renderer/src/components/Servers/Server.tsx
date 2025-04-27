@@ -1,22 +1,8 @@
 import usePop from "../../hooks/usePop";
 import { serverList } from "../../motion/server.config";
-import { TailwindStylesheet } from "../../types/tw";
-import { parse } from "../../util/tw";
 import ServerCard from "./ServerCard";
 import { AnimatePresence, motion } from "motion/react";
-
-const styles = parse({
-    section: {
-        layout: "basis-10/12 overflow-y-auto",
-        sizing: "h-[551px]",
-        spacing: "mx-auto",
-        background: "bg-cs2-dark/45",
-    },
-    list: {
-        layout: "flex flex-row flex-wrap gap-4",
-        spacing: "p-4",
-    },
-} as TailwindStylesheet);
+import styles from "./Server.Styles";
 
 const Server: React.FC = () => {
     const { groupedPops, selectedRegion, blockedPops } = usePop(),

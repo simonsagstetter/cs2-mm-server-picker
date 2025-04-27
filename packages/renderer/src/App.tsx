@@ -8,17 +8,18 @@ import Region from "./components/Navigation/Region";
 import Footer from "./components/UI/Footer/Footer";
 import Sidebar from "./components/Sidebar/Sidebar";
 import ErrorModal from "./components/UI/Error/ErrorModal";
+import styles from "./App.Styles";
 
 function App() {
     const { status } = usePop();
     return (
         <>
-            <main className="fixed w-screen h-screen">
+            <main className={styles.main}>
                 {!status.isLoading && (
                     <>
                         <Header />
                         <Region />
-                        <article className="flex flex-row">
+                        <article className={styles.content}>
                             <Sidebar />
                             <Server />
                         </article>

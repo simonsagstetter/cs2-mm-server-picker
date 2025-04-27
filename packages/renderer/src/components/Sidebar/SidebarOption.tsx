@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import usePop from "../../hooks/usePop";
+import styles from "./SidebarOption.Styles";
+import { RUNNING_ACTION_ERROR } from "../../constants/messages";
 
 interface SidebarOption {
     title: string;
@@ -29,37 +31,28 @@ const SidebarOption: React.FC<SidebarOption> = ({ title, description, isSelectMo
     };
 
     const handleOnClick = () => {
-        if (disabled)
-            showModal({
-                title: "App is running",
-                message: "Server blocking action is running. Please cancel the action first.",
-            });
+        if (disabled) showModal(RUNNING_ACTION_ERROR);
     };
 
     return (
-        <div className="flex flex-col bg-cs2-dark/[7%] px-6 py-2">
-            <div className="flex flex-row gap-4 items-center justify-between">
-                <h2 className="text-cs2-white text-lg">{title}</h2>
-                <label htmlFor={title} className="relative inline-block w-12 h-6">
+        <div className={styles.optionWrapper}>
+            <div className={styles.inputGroup}>
+                <h2 className={styles.inputTitle}>{title}</h2>
+                <label htmlFor={title} className={styles.inputLabel}>
                     <input
                         type="checkbox"
                         id={title}
-                        className="opacity-0 w-0 h-0 peer"
+                        className={styles.input}
                         onChange={handleOnChange}
                         onClick={handleOnClick}
                         defaultChecked={false}
                         ref={checkbox}
                         disabled={disabled}
                     />
-                    <span
-                        className={`absolute cursor-pointer inset-shadow-sm inset-shadow-cs2-dark top-0 left-0 right-0 bottom-0 bg-stone-700 rounded-xl duration-200 transition-color
-                            before:z-10 before:rounded-full before:absolute before:content[' '] before:h-4 before:w-4 before:left-1 before:bottom-1 before:bg-cs2-white before:duration-200 before:transition-all before:shadow-xs
-                            peer-checked:bg-cs2-lightgreen peer-checked:inset-shadow-cs2-darkgreen peer-checked:before:translate-x-[24px]
-                            ${disabled ? "!cursor-not-allowed" : ""}`}
-                    ></span>
+                    <span className={`${styles.switch} ${disabled ? styles.disabled : ""}`}></span>
                 </label>
             </div>
-            <small className="text-cs2-white text-xs">{description}</small>
+            <small className={styles.description}>{description}</small>
         </div>
     );
 };
