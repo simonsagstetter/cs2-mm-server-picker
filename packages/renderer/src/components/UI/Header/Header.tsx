@@ -8,7 +8,7 @@ const Header: React.FC = () => {
             </div>
             <nav className=" bg-cs2-dark/45 **:text-base **:font-medium">
                 <ul className="flex flex-row gap-8 w-full h-12 justify-center items-center **:uppercase">
-                    <li className="bg-cs2-blue/75 text-cs2-lightblue py-[0.1rem] px-2 rounded-sm shadow-xs hover:bg-cs2-white/10  **:cursor-pointer cursor-pointer select-none">
+                    <li className="bg-cs2-blue/90 text-cs2-lightblue py-[0.1rem] px-2 rounded-sm shadow-xs hover:bg-cs2-white/10  **:cursor-pointer cursor-pointer select-none">
                         Select Servers
                     </li>
                 </ul>

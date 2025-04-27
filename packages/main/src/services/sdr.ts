@@ -6,8 +6,9 @@ export const fetchSDRConfig = async (): Promise<any> => {
 
     if (!response.ok) throw response;
 
-    const data: SDRConfig = await response.json();
-    const instance = (await (await new PopAdapter(data).parse()).getRelayPings()).group();
+    const sdrconfig: SDRConfig = await response.json();
+    const adapter = new PopAdapter(sdrconfig);
+    const { pops, groupedPops } = (await (await adapter.parse()).getRelayPings()).group();
 
-    return { pops: instance.pops, groupedPops: instance.groupedPops };
+    return { pops, groupedPops };
 };

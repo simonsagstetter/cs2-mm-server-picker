@@ -1,15 +1,7 @@
-import util from "node:util";
-import { exec as child_process_exec } from "node:child_process";
 import { PoP } from "../../../../types/pop.types.js";
 import sudoPrompt from "sudo-prompt";
 
-const exec = util.promisify(child_process_exec);
 export default class Firewall {
-    constructor() {}
-
-    async runNetsh(cmd: string) {
-        return exec(cmd, { windowsHide: true });
-    }
     async runAsAdmin(
         cmd: string,
     ): Promise<{ stdout: string | Buffer<ArrayBufferLike>; stderr: string | Buffer<ArrayBufferLike> }> {

@@ -14,30 +14,26 @@ export default /** @type import('electron-builder').Configuration */
    * It is recommended to avoid using non-standard characters such as spaces in artifact names,
    * as they can unpredictably change during deployment, making them impossible to locate and download for update.
    */
-  appId: "com.cs2mmserverpicker.app",
-    productName: "CS2 MM Server Picker",
-    copyright: "Copyright @ 2025 Simon Sagstetter",
-    win: {
-        target: [
-            {
-                target: "nsis",
-                arch: ["x64", "ia32"],
-            },
-            {
-                target: "portable",
-                arch: ["x64", "ia32"],
-            },
-        ],
-    },
-    nsis: {
-        allowElevation: true,
-        createDesktopShortcut: true,
-        createStartMenuShortcut: true,
-        shortcutName: "CS2 Matchmaking Server Picker",
-        deleteAppDataOnUninstall: false,
-        oneClick: true,
-        perMachine: true,
-    },
+  appId: "com.electron.cs2mmserverpicker",
+  productName: "Counter Strike 2 Matchmaking Server Picker",
+  copyright: "Copyright @ 2025 Simon Sagstetter",
+  win: {
+      target: [
+          {
+              target: "nsis",
+              arch: ["x64", "ia32"],
+          },
+      ],
+  },
+  nsis: {
+      allowElevation: true,
+      createDesktopShortcut: true,
+      createStartMenuShortcut: true,
+      shortcutName: "CS2 Matchmaking Server Picker",
+      deleteAppDataOnUninstall: false,
+      oneClick: true,
+      perMachine: false,
+  },
   artifactName: '${productName}-${version}-${os}-${arch}.${ext}',
   files: [
     'LICENSE*',

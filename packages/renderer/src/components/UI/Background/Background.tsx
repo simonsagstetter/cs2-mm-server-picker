@@ -1,5 +1,5 @@
-import NukeBackground from "../../../assets/nukebg.png";
-import Dots from "../../../assets/dots.svg";
+import NukeBackground from "../../../assets/images/nukebg.png";
+import Dots from "../../../assets/images/dots.svg";
 
 const Background: React.FC = () => {
     return (

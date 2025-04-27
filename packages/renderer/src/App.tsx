@@ -11,13 +11,12 @@ import ErrorModal from "./components/UI/Error/ErrorModal";
 
 function App() {
     const { status } = usePop();
-
     return (
         <>
             <main className="fixed w-screen h-screen">
-                <Header />
                 {!status.isLoading && (
                     <>
+                        <Header />
                         <Region />
                         <article className="flex flex-row">
                             <Sidebar />
@@ -27,8 +26,8 @@ function App() {
                     </>
                 )}
             </main>
-            {status.isLoading && <LoadingCard title={status.title} messages={status.messages} />}
-            {status.isError && <ErrorModal title={status.title} message={status.messages[0]} />}
+            <LoadingCard title={status.title} messages={status.messages} isActive={status.isLoading} />
+            <ErrorModal title={status.title} message={status.messages[0]} isActive={status.isError} />
             <Background />
         </>
     );

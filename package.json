@@ -1,12 +1,12 @@
 {
   "name": "cs2mmserverpicker",
-  "description": "Counter Strike 2 Matchmaking Server Blocker",
+  "description": "Counter Strike 2 Matchmaking Server Picker",
   "version": "0.0.1",
   "private": true,
   "type": "module",
   "author": {
     "email": "simon.sagstetter95@gmail.com",
-    "name": "Simon sagstetter",
+    "name": "Simon Sagstetter",
     "url": "https://github.com/"
   },
   "main": "packages/entry-point.mjs",
@@ -18,7 +18,7 @@
   },
   "scripts": {
     "build": "npm run build -ws --if-present",
-    "compile": "npm run build && electron-builder build --config electron-builder.mjs -w",
+    "compile": "npm run build && electron-builder build --config electron-builder.mjs -w --x64 --ia32",
     "test": "npx playwright test ./tests/e2e.spec.ts",
     "start": "node packages/dev-mode.js",
     "typecheck": "npm run typecheck -ws --if-present",
@@ -40,6 +40,7 @@
     "@app/main": "*",
     "@tailwindcss/vite": "^4.1.4",
     "@types/ping": "^0.4.4",
+    "motion": "^12.9.2",
     "ping": "^0.4.4",
     "sudo-prompt": "^9.2.1",
     "tailwindcss": "^4.1.4"
