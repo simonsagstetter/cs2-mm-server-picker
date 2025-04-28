@@ -35,7 +35,6 @@ This is a Windows application powered by Electron.js that allows you to block co
 
 -   [Features](#features)
 -   [Installation](#installation)
--   [Usage](#usage)
 -   [Setup](#setup)
 -   [Credits](#credits)
 -   [Contributing](#contributing)
