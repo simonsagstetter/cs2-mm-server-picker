@@ -7,7 +7,7 @@
 Counter Strike 2 Matchmaking Server Picker
 </h1>
 
-<p align="center"><strong>Pick and block official Counter Strike 2 matchmaking servers. You decide where you want to play.</strong></p>
+<p align="center"><strong>Pick and block official Counter-Strike 2 matchmaking servers. Take control and decide where you want to play.</strong></p>
 
 <div align="center">
 
@@ -29,11 +29,13 @@ Counter Strike 2 Matchmaking Server Picker
 
 </small>
 
-This is an electronjs powered windows application which can block connections to official Counter Strike 2 matchmaking server relays. Thus you can play on the server with the best ping or on your preferred location. This app does not interfere in any way with the Counter Strike 2 game itself so it is safe to use. The design is inspired by the current Panorama UI.
+This is a Windows application powered by Electron.js that allows you to block connections to official Counter-Strike 2 matchmaking server relays. This way, you can play on the server with the best ping or at your preferred location. The app does not interfere with the Counter-Strike 2 game itself, making it safe to use. Its design is inspired by the current Panorama UI.
 
 ## Table of Contents
 
 -   [Features](#features)
+-   [Installation](#installation)
+-   [Usage](#usage)
 -   [Setup](#setup)
 -   [Credits](#credits)
 -   [Contributing](#contributing)
@@ -41,17 +43,33 @@ This is an electronjs powered windows application which can block connections to
 
 ## Features
 
--   Relays are always up to date - fetches all available relays via steam api and sorts them into the right regions by geolocation
--   CS2 Panorama UI inspired design and layout - easy to use and understand
--   Block Mode - Select servers you want to block and play on all others
--   Select Mode - Select servers you want to play on and block all others
--   Compare server ping times and refresh them any time
+-   Always up-to-date relay list — fetches all available relays via the Steam API and assigns them to the correct regions using geolocation
+-   CS2 Panorama UI-inspired design and layout — easy to use and understand
+-   Block Mode — select servers you want to block and play on all others
+-   Select Mode — select servers you want to play on and block all others
+-   Compare server ping times and refresh them at any time
 
 <small>
 
-> Important Note: The Steam API does only provide information on the server relays and their location. The real IPs wont be revealed due this would be a serious security vulnerability. So there is no 100% guarantee that this blocker will always work and there wont be any tool out there which can do this - its simply impossible. But most of the time blocking in and outgoing tcp and upd connections from the relay ip addresses and their port range wil do the job! That is also what this tool is doing under the hood and it works at least 9/10 times.
+> Important Note: The Steam API only provides information about the server relays and their locations. The actual IP addresses of the game servers are not revealed, as this would pose a serious security risk. Therefore, there is no 100% guarantee that this blocker will always work, and no tool can offer complete reliability — it’s simply impossible. However, most of the time, blocking incoming and outgoing TCP and UDP connections from the relay IP addresses and their port ranges will do the job. That’s exactly what this tool does under the hood, and it works in at least 9 out of 10 cases.
 
 </small>
+
+## Installation
+
+[Download the latest release here](https://github.com/simonsagstetter/cs2-mm-server-picker/releases)
+
+Choose the ia32 installer if you are running a 32-bit version of Windows, or the x64 installer if you are using a 64-bit version. If you are unsure, select the installer without a postfix (the one ending with `...win.exe`).
+
+The executable is a one-click installer, and the app will launch automatically once the installation is complete.
+
+> Important: Since the application executes `netsh` commands to add firewall rules, it requires administrative privileges. If you don’t want to confirm a user privilege elevation every time you block or unblock servers, you should run the app as an administrator.
+> You can also set it to always run as administrator by right-clicking the app icon, selecting Properties, going to the Compatibility tab, and checking Run this program as an administrator.
+
+<p align="center">
+    <img src="./.github/assets/properties.png"
+    width="425">
+</p>
 
 ## Setup
 
