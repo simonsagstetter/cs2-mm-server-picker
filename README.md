@@ -14,6 +14,7 @@ Counter Strike 2 Matchmaking Server Picker
 ![Static Badge](https://img.shields.io/badge/version-0.0.1-blue?style=for-the-badge)
 ![Static Badge](https://img.shields.io/badge/license-MIT-orange?style=for-the-badge)
 ![Static Badge](https://img.shields.io/badge/contributers-1-red?style=for-the-badge)
+![GitHub Downloads (latest)](https://img.shields.io/github/downloads/simonsagstetter/cs2-mm-server-picker/latest/total?style=for-the-badge)
 
 <a href="https://buymeacoffee.com/simonsagstd">
 
